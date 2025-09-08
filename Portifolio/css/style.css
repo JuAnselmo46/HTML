@@ -1,0 +1,133 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e6d8c2;
+    margin: 0;
+    padding: 0;
+    color: #584534;
+    line-height: 1.5;
+
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+    
+}
+
+header{
+    background: rgb(160, 139, 209);
+    color: #51258a;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #51258a 3px solid;
+    
+}
+header h1{
+    font-family: Courier, monospace;	
+    text-align: center;
+    margin: 0;
+    font-size: 30px;
+}
+nav ul{
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+nav li{
+    display: inline;
+    padding: 0 20px;
+
+}
+nav a{
+    font-family: Courier, monospace;
+    color: #f5f5dc;
+    text-decoration: nome;
+    font-weight: bold;
+}
+nav a:hover{
+    color: #e0cffa;
+    text-decoration: underline;
+}
+
+.secao{
+   padding: 20px; 
+   margin-top: 20px;
+   background: #cebfa3;
+   border-radius: 30px;
+   box-shadow: 0 2px 5px #49300f;
+
+}
+h2{
+    font-family: Courier, monospace;
+    color: #614021;
+    border-bottom: 2px solid rgb(153, 123, 93);
+    padding-bottom: 10px;
+}
+p{ 
+ font-family: Courier, monospace;
+ text-align: center;
+ color: #584431;
+ font-weight: bold;
+
+}
+.imagem-hobbies{
+    max-width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+table{
+    width: 100%;
+    margin-top: 50px;
+    border-collapse: collapse;
+}
+th, td{
+    padding: 12px;
+    border: 1px solid rgb(65, 45, 29);
+    text-align: center;
+
+}
+thead{
+    background-color: #bb9a74;
+
+}
+.formulario{
+    margin-right:20px;
+
+}
+.formulario label{
+    display:block;
+    margin-bottom: 5px;
+}
+.formulario input, textarea{
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+}
+button{
+    width:100px;
+   border-radius: 3px;
+   background: #b49e84;
+   color:rgb(145, 113, 87);
+}
+.botao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+button:hover{
+    background: #aa947a;
+}
+
+footer{
+    margin: top 20px;
+    padding: 20px;
+    background-color: #cebea4;
+    color: rgb(0, 0, 0);
+    align-self: center;
+}
