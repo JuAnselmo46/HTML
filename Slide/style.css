@@ -1,0 +1,92 @@
+h1 {
+font-family: "Bree Serif", serif;
+  font-style: normal;
+  font-size: 130px;
+  position: absolute;
+  bottom: 40%;
+  left: 50%
+}
+
+h2{
+    font-family: "Bree Serif", serif;
+  font-style: normal;
+  font-size: 40px;
+  position: absolute;
+  bottom: 40%;
+  left: 67%
+}
+
+body {
+  background-image: url('fundo.png');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  height: 100vh; 
+  margin: 0;
+}
+
+.desenho1 {
+  position: absolute;
+  bottom: 0;  
+  left: 0;     
+  width: 803px;
+  height: 823px;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  left: 93%
+  
+}
+
+button {
+    width: 60px;
+  height: 60px;
+  border-radius: 50%; 
+  background-color: #65bdcb;
+  color: white;
+  border: none;
+  text-align: center;
+}
+
+
+#h1p2 {
+  font-family: "Bree Serif", serif;
+  font-style: normal;
+  font-size: 50px;
+  color: #000; 
+  position: absolute;
+  top: 100px;   
+  left:150px; 
+  margin: 0;   
+  color: #007BFF;
+  text-decoration: underline; 
+}
+
+p{
+    font-size: 17px;
+    font-family: "Bree Serif", serif;
+    position: absolute;
+   top: 180px;   
+   left:150px; 
+}
+
+.segundo
+{
+    font-size: 17px;
+    font-family: "Bree Serif", serif;
+    position: absolute;
+   top: 550px;   
+   left:150px; 
+}
+
+.terceiro {
+  font-size: 17px;
+  font-family: "Bree Serif", serif;
+  position: absolute;
+  top: 100px;     /* mesma altura do h1 */
+  right: 150px;   /* distância da borda direita */
+  width: 400px;   /* controla a largura do texto (opcional, para não quebrar feio) */
+  text-align: right; /* alinha o texto à direita, opcional */
+}
