@@ -48,6 +48,7 @@ button {
   color: white;
   border: none;
   text-align: center;
+  cursor: pointer;
 }
 
 
@@ -55,17 +56,22 @@ button {
   font-family: "Bree Serif", serif;
   font-style: normal;
   font-size: 50px;
-  color: #000; 
-  position: absolute;
-  top: 100px;   
-  left:150px; 
-  margin: 0;   
-  color: #007BFF;
-  text-decoration: underline; 
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 3px solid #000;
+  border-radius: 12px;
+  padding: 15px 25px;
+  display: inline-block;
+  box-shadow: 5px 5px 0 #00aaff;
+  position: relative; /* permite usar top e left */
+  left: 150px;
+  top: 5%;
+  white-space: nowrap; /* impede quebra de linha dentro da caixa */
 }
 
 p{
-    font-size: 17px;
+    font-size: 18px;
     font-family: "Bree Serif", serif;
     position: absolute;
    top: 180px;   
@@ -74,7 +80,7 @@ p{
 
 .segundo
 {
-    font-size: 17px;
+    font-size: 18px;
     font-family: "Bree Serif", serif;
     position: absolute;
    top: 550px;   
@@ -82,11 +88,361 @@ p{
 }
 
 .terceiro {
-  font-size: 17px;
+  font-size: 18px;
   font-family: "Bree Serif", serif;
   position: absolute;
-  top: 100px;     /* mesma altura do h1 */
-  right: 150px;   /* distância da borda direita */
-  width: 400px;   /* controla a largura do texto (opcional, para não quebrar feio) */
-  text-align: right; /* alinha o texto à direita, opcional */
+  top: 100px;     
+  left: 60%; 
+  width: 400px;  
+  text-align: right; 
+}
+
+.desenho2 {
+  position: absolute;
+  left: 27%; 
+  top: 50px; 
+  width: 150px;
+  height: 150px;
+}
+
+.desenho3 {
+  position: absolute;
+  right: 17%; 
+  top: 35%; 
+  width: 550px;
+  height: 350px;
+  border-radius: 12px;
+}
+
+#h1p3 {
+  font-family: "Bree Serif", serif;
+  font-style: normal;
+  font-size: 50px;
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 3px solid #000;
+  border-radius: 12px;
+  padding: 15px 25px;
+  display: inline-block;
+  box-shadow: 5px 5px 0 #cc5535;
+  position: relative; /* permite usar top e left */
+  left: 150px;
+  top: 5%;
+  white-space: nowrap; /* impede quebra de linha dentro da caixa */
+}
+
+.desenho4 {
+  position: absolute;
+  left: 50%; 
+  top: 150px; 
+  width: 550px;
+  height: 350px;
+  line-height: 1.6;
+  letter-spacing: -0.3px;
+  border-radius: 12px;
+}
+
+.quarto
+{
+    font-size: 18px;
+    font-family: "Bree Serif", serif;
+    position: absolute;
+   top: 200px;   
+   left:150px; 
+}
+
+#h1p4 {
+  font-family: "Bree Serif", serif;
+  font-style: normal;
+  font-size: 50px;
+  font-weight: bold;
+  color: #000;
+  left: 150px;
+  top: 5%;
+ 
+}
+
+.quinto
+{
+    font-size: 18px;
+    font-family: "Bree Serif", serif;
+    position: absolute;
+    top: 250px;   
+    left:150px; 
+}
+
+.imgw3c {
+  position: absolute;
+  left: 50%; 
+  top: 300px; 
+  width: 550px;
+  height: 300px;
+  border-radius: 12px;
+}
+
+.lista
+{
+    font-size: 18px;
+    font-family: "Bree Serif", serif;
+    position: absolute;
+   top: 400px;   
+   left:150px; 
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaçamento vertical entre os itens */
+}
+
+.sexto
+{
+    font-size: 18px;
+    font-family: "Bree Serif", serif;
+    position: absolute;
+    top: 28%;   
+    left:150px; 
+}
+
+.h2p6{
+    font-family: "Bree Serif", serif;
+  font-style: normal;
+  font-size: 30px;
+  position: absolute;
+  top:25%;
+  left: 8%
+}
+
+.inline{
+position: absolute;
+  right: 63%; 
+  top: 380px; 
+  width: 600px;
+  height: 100px;
+  border-radius: 12px;
+}
+
+.h2p61{
+    font-family: "Bree Serif", serif;
+  font-style: normal;
+  font-size: 30px;
+  position: absolute;
+  top:53%;
+  left: 8%
+}
+
+.h2p62{
+    font-family: "Bree Serif", serif;
+  font-style: normal;
+  font-size: 30px;
+  position: absolute;
+  top:10%;
+  left: 60%
+}
+
+.sexto1
+{
+    font-size: 18px;
+    font-family: "Bree Serif", serif;
+    position: absolute;
+    top: 57%;   
+    left:150px; 
+}
+.sexto2
+{
+    font-size: 18px;
+    font-family: "Bree Serif", serif;
+    position: absolute;
+    top: 15%;  
+    left: 57%; 
+   
+}
+.externa{
+position: absolute;
+  right: 60%; 
+  top: 800px; 
+  width: 600px;
+  height: 100px;
+  border-radius: 12px;
+}
+
+.interna{
+position: absolute;
+  right: 13%; 
+  top: 250px; 
+  width: 550px;
+  height: 500px;
+  border-radius: 12px;
+}
+
+.setimo{
+     font-size: 25px;
+    font-family: "Bree Serif", serif;
+    position: absolute;
+    left: 20%;
+}
+
+.oito{
+    font-size: 22px;
+    top: 300px;   
+   left:150px;  
+}
+
+.seletor{
+    font-size: 22px;
+    top: 150px;   
+   left:150px;
+}
+
+.cod{
+    position: absolute;
+  right: 30%; 
+  top: 250px; 
+  width: 370px;
+  height: 300px;
+  border-radius: 12px;
+}
+
+.h1p10{
+    font-size: 50px;
+    top: 65px;   
+   left:150px;
+}
+
+.tex10{
+   top: 140px;   
+   left:150px;
+}
+
+.h1p101{
+    font-size: 50px;
+    top: 24%;   
+   left:150px;
+}
+.tex101{
+    top:33%; 
+   left:150px;
+}
+
+.h1p102{
+    font-size: 50px;
+    top: 49%;   
+   left:150px;
+}
+.tex102{
+    top:57%; 
+   left:150px;
+}
+
+.h1p103{
+    font-size: 50px;
+    top: 70%;   
+   left:150px;
+}
+.tex103{
+    top:80%; 
+   left:150px;
+}
+
+.seletores{
+  position: absolute;
+  right: 13%; 
+  top: 150px; 
+  width: 450px;
+  height: 650px;
+  border-radius: 12px;
+}
+
+.p10{
+  font-size: 22px;
+  right:20%; 
+  top: 150px; 
+}
+
+.hs{
+  position: absolute;
+  right: 20%; 
+  top: 250px; 
+  width: 450px;
+  height: 250px;
+  border-radius: 12px;
+}
+
+.fim{
+  font-size: 120px;
+  left:15%; 
+  top: 270px; 
+}
+
+.nomes{
+  font-size: 22px;
+  left:15%; 
+  top: 480px; 
+}
+
+.janela{
+  position: absolute;
+  right: 13%; 
+  top: 150px; 
+  width: 450px;
+  height: 650px;
+  border-radius: 12px;
+}
+
+.botao2 {
+  position: fixed;
+  left: 45px;
+  bottom: 48%;
+  transform: translateY(50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #65bdcb;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  line-height: 60px; 
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+}
+
+.t121{
+  font-size: 15px;
+  font-family: "Bree Serif", serif;
+  position: absolute; 
+  top: 60%;  
+  left: 15%; 
+  margin-bottom: 20px; 
+}
+
+.t122{
+  font-size: 15px;
+  font-family: "Bree Serif", serif;
+  position: absolute; 
+  top: 60%;  
+  left: 41%; 
+  margin-bottom: 20px; 
+}
+
+.t123{
+  font-size: 15px;
+  font-family: "Bree Serif", serif;
+  position: absolute; 
+  top: 60%;  
+  left: 68%; 
+  margin-bottom: 20px; 
+}
+
+.analogia{
+  position: absolute;
+  left: 38%; 
+  top: 60px; 
+  width: 450px;
+  height: 450px;
+  line-height: 1.6;
+  letter-spacing: -0.3px;
+  border-radius: 12px;
 }
