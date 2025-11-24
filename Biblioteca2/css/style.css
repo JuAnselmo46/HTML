@@ -1,0 +1,58 @@
+body {
+    font-family: "Voces", sans-serif;
+    background-color: #faf0CA;
+    font-weight: 400;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+header {
+    background: #0D3B66;
+    color: #70a8db;
+    padding: 20px 0;
+}
+
+
+header h1 {
+    text-align: center;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 0;
+}
+nav a {
+    color: #eccd75;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: #f1c959;
+}
+
+.pesquisa {
+    text-align: right;
+    padding: 10px;
+}
+
+.pesquisa input {
+    width: 15%;
+    padding: 10px;
+}
+
+.pesquisa button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
