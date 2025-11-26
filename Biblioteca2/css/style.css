@@ -1,12 +1,27 @@
+h1{
+    font-family: "Montserrat", sans-serif;
+     font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    right: 10px;
+    padding-top: 25px;
+     margin: 0;
+    font-size: 55px;
+    background-color: #caf7fa;
+    color: #7a5d1b;
+}
+
 body {
     font-family: "Voces", sans-serif;
     background-color: #faf0CA;
     font-weight: 400;
+     margin: 0;
+    padding: 0;
 }
 
 .container {
-    width: 90%;
-    margin: auto;
+    margin: 0;
+    padding: 0;
 }
 
 h2 {
@@ -16,7 +31,7 @@ h2 {
 header {
     background: #0D3B66;
     color: #70a8db;
-    padding: 20px 0;
+    padding: 1px 0;
 }
 
 
