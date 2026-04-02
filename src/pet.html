@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>PetShop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    .font-poppins {
+      font-family: 'Poppins', sans-serif;
+    }
+    .bg-heart {
+      background-color: #FF4B4B;
+    }
+    .text-heart {
+      color: #FF4B4B;
+    }
+    .border-heart {
+      border-color: #FF4B4B;
+    }
+    .hover-heart:hover {
+      background-color: #FF3333;
+    }
+    .bg-cat-yellow {
+      background-color: #F9E2B3;
+    }
+    .text-cat-yellow {
+      color: #F9E2B3;
+    }
+    .bg-cat-pink {
+      background-color: #FFB6C1;
+    }
+    .text-cat-pink {
+      color: #FFB6C1;
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- HEADER -->
+  <header class="flex flex-col items-center p-4 border-b bg-heart shadow-md space-y-4">
+  <!-- Logo maior na página principal -->
+  <div class="w-32 h-32 bg-white rounded-full overflow-hidden border-4 border-white">
+    <!-- Substitua logo.png pela sua imagem -->
+    <img src="https://i.pinimg.com/1200x/53/a7/2a/53a72a40a84a32547868f66214908c0c.jpg" alt="Logo principal" class="object-cover w-full h-full" />
+  </div>
+  <h1 class="text-4xl font-poppins font-bold text-white mt-2 tracking-wide">Love Pet</h1>
+  <span class="sr-only">PetShop Logo</span>
+
+  <!-- Menu de Navegação Principal -->
+  <nav class="flex gap-6 mt-2">
+    <button onclick="abrirHome()" class="text-white font-semibold hover:text-cat-yellow transition duration-200">Início</button>
+    <button onclick="abrirProdutos()" class="text-white font-semibold hover:text-cat-yellow transition duration-200">Produtos</button>
+    <button onclick="abrirClientes()" class="text-white font-semibold hover:text-cat-yellow transition duration-200">Clientes</button>
+  </nav>
+
+  <!-- Botão menu hambúrguer com texto Categorias -->
+  <button
+    onclick="toggleMenu()"
+    class="flex items-center text-white font-semibold space-x-2 focus:outline-none hover:opacity-90 transition mt-2"
+    aria-label="Abrir menu categorias"
+  >
+    <svg
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+    <span>Categorias</span>
+  </button>
+</header>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow transform -translate-x-full transition">
+    <div class="p-4 flex flex-col items-center space-y-6 border-b">
+      <!-- Logo na sidebar -->
+      <div class="w-20 h-20 bg-gray-300 rounded-full overflow-hidden">
+        <img src="https://i.pinimg.com/1200x/53/a7/2a/53a72a40a84a32547868f66214908c0c.jpg" alt="Logo" class="object-cover w-full h-full" />
+      </div>
+      <span class="sr-only">PetShop Logo</span>
+    </div>
+
+    <div class="p-4">
+      <button onclick="abrirHome()" class="block w-full text-left p-2 hover:bg-cat-pink/20 font-semibold text-heart rounded transition">
+        Início
+      </button>
+      <button onclick="abrirProdutos()" class="block w-full text-left p-2 hover:bg-cat-pink/20 font-semibold text-heart rounded transition mt-2">
+        Produtos
+      </button>
+      <button onclick="abrirClientes()" class="block w-full text-left p-2 hover:bg-cat-pink/20 font-semibold text-heart rounded transition mt-2">
+        Clientes
+      </button>
+      <button onclick="abrirCategorias()" class="block w-full text-left p-2 hover:bg-cat-pink/20 font-semibold text-heart rounded transition mt-2">
+        Categorias
+      </button>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <main class="p-6">
+    <!-- HOME -->
+    <div id="home">
+      <h2 class="text-2xl font-bold mb-4">Bem-vindo ao PetShop 🐾</h2>
+      <p>Use o menu para acessar as categorias.</p>
+    </div>
+
+    <!-- PRODUTOS -->
+    <div id="produtos" class="hidden">
+      <h2 class="text-2xl font-bold mb-4">Produtos</h2>
+      <p>Confira nossos produtos disponíveis.</p>
+    </div>
+
+    <!-- CLIENTES -->
+    <div id="clientes" class="hidden">
+      <h2 class="text-2xl font-bold mb-4">Clientes</h2>
+      <p>Gerenciamento de clientes.</p>
+    </div>
+
+    <!-- CATEGORIAS -->
+    <div id="categorias" class="hidden">
+      <h2 class="text-2xl font-bold mb-4">Categorias</h2>
+
+      <!-- FORMULÁRIO -->
+      <div class="bg-white p-4 rounded shadow mb-4">
+        <input type="hidden" id="id" />
+        <input id="nome" placeholder="Nome" class="border p-2 w-full mb-2" />
+        <input id="descricao" placeholder="Descrição" class="border p-2 w-full mb-2" />
+        <button onclick="salvarCategoria()" class="bg-heart hover-heart text-white px-4 py-2 rounded transition">
+          Salvar
+        </button>
+      </div>
+
+      <!-- LISTA DE CATEGORIAS -->
+      <div id="listaCategorias"></div>
+    </div>
+  </main>
+
+  <script>
+    const API = "http://localhost:8080/api/categorias";
+
+    // MENU
+    function toggleMenu() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("-translate-x-full");
+    }
+
+    // NAVEGAÇÃO
+    function abrirHome() {
+      document.getElementById("home").classList.remove("hidden");
+      document.getElementById("produtos").classList.add("hidden");
+      document.getElementById("clientes").classList.add("hidden");
+      document.getElementById("categorias").classList.add("hidden");
+    }
+
+    function abrirProdutos() {
+      document.getElementById("home").classList.add("hidden");
+      document.getElementById("produtos").classList.remove("hidden");
+      document.getElementById("clientes").classList.add("hidden");
+      document.getElementById("categorias").classList.add("hidden");
+    }
+
+    function abrirClientes() {
+      document.getElementById("home").classList.add("hidden");
+      document.getElementById("produtos").classList.add("hidden");
+      document.getElementById("clientes").classList.remove("hidden");
+      document.getElementById("categorias").classList.add("hidden");
+    }
+
+    function abrirCategorias() {
+      document.getElementById("home").classList.add("hidden");
+      document.getElementById("produtos").classList.add("hidden");
+      document.getElementById("clientes").classList.add("hidden");
+      document.getElementById("categorias").classList.remove("hidden");
+      toggleMenu();
+      listarCategorias();
+    }
+
+    // LISTAR CATEGORIAS (GET)
+    async function listarCategorias() {
+      try {
+        const res = await fetch(API);
+        const data = await res.json();
+
+        const lista = document.getElementById("listaCategorias");
+        lista.innerHTML = "";
+
+        data.forEach(cat => {
+          lista.innerHTML += `
+            <div class="bg-white p-3 mb-2 rounded shadow flex justify-between items-center border-l-4 border-heart">
+              <div class="flex-1">
+                <strong class="text-sm text-gray-700">${cat.nome}</strong><br />
+                <small class="text-gray-400 text-xs">${cat.descricao}</small>
+              </div>
+              <div class="flex gap-2 ml-3">
+                <button onclick="editar(${cat.id_categoria}, '${cat.nome}', '${cat.descricao}')"
+                  class="bg-cat-yellow hover:bg-yellow-300 text-gray-800 px-2 py-1 rounded text-sm transition-colors font-semibold">Editar</button>
+                <button onclick="excluir(${cat.id_categoria})"
+                  class="bg-heart hover-heart text-white px-2 py-1 rounded text-sm transition-colors font-semibold">Excluir</button>
+              </div>
+            </div>
+          `;
+        });
+      } catch (error) {
+        console.error("Erro ao listar categorias:", error);
+      }
+    }
+
+    // SALVAR CATEGORIA (POST ou PUT)
+    async function salvarCategoria() {
+      const id = document.getElementById("id").value;
+      const nome = document.getElementById("nome").value;
+      const descricao = document.getElementById("descricao").value;
+
+      if (!nome || !descricao) {
+        alert("Preencha todos os campos");
+        return;
+      }
+
+      const categoria = { nome, descricao, ativo: true };
+
+      try {
+        if (id) {
+          // PUT
+          await fetch(`${API}/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(categoria)
+          });
+        } else {
+          // POST
+          await fetch(API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(categoria)
+          });
+        }
+
+        limparForm();
+        listarCategorias();
+      } catch (error) {
+        console.error("Erro ao salvar categoria:", error);
+      }
+    }
+
+    // EDITAR
+    function editar(id, nome, descricao) {
+      document.getElementById("id").value = id;
+      document.getElementById("nome").value = nome;
+      document.getElementById("descricao").value = descricao;
+    }
+
+    // EXCLUIR (DELETE)
+    async function excluir(id) {
+      if (!confirm("Tem certeza que deseja excluir esta categoria?")) return;
+
+      try {
+        await fetch(`${API}/${id}`, {
+          method: "DELETE"
+        });
+        listarCategorias();
+      } catch (error) {
+        console.error("Erro ao excluir categoria:", error);
+      }
+    }
+
+    // LIMPAR FORMULÁRIO
+    function limparForm() {
+      document.getElementById("id").value = "";
+      document.getElementById("nome").value = "";
+      document.getElementById("descricao").value = "";
+    }
+  </script>
+</body>
+</html>
