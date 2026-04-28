@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<title>PetShop</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet" />
+
+<style>
+.font-poppins { font-family: 'Poppins', sans-serif; }
+
+.bg-heart { background-color: #FF4B4B; }
+.text-heart { color: #FF4B4B; }
+.border-heart { border-color: #FF4B4B; }
+.hover-heart:hover { background-color: #FF3333; }
+
+.bg-cat-yellow { background-color: #F9E2B3; }
+.bg-cat-pink { background-color: #FFB6C1; }
+</style>
+</head>
+
+<body class="bg-white">
+
+<header class="flex flex-col items-center p-4 border-b bg-heart shadow-md space-y-4">
+  <div class="w-32 h-32 bg-white rounded-full overflow-hidden border-4 border-white">
+    <img src="https://i.pinimg.com/1200x/53/a7/2a/53a72a40a84a32547868f66214908c0c.jpg" class="object-cover w-full h-full"/>
+  </div>
+
+  <h1 class="text-4xl font-poppins font-bold text-white">Love Pet</h1>
+
+  <nav class="flex gap-6">
+    <button onclick="abrirHome()" class="text-white">Início</button>
+    <button onclick="abrirProdutos()" class="text-white">Produtos</button>
+    <button onclick="abrirClientes()" class="text-white">Clientes</button>
+    <button onclick="abrirCategorias()" class="text-white">Categorias</button>
+  </nav>
+</header>
+
+<main class="p-6">
+
+<div id="home">
+  <h2 class="text-2xl font-bold">Bem-vindo 🐾</h2>
+</div>
+
+<!-- PRODUTOS -->
+<div id="produtos" class="hidden">
+
+<h2 class="text-2xl font-bold mb-4">Produtos</h2>
+
+<div class="bg-white p-4 rounded shadow mb-4">
+  <input type="hidden" id="idProduto">
+
+  <input id="nomeProduto" placeholder="Nome" class="border p-2 w-full mb-2 rounded">
+  <input id="descricaoProduto" placeholder="Descrição" class="border p-2 w-full mb-2 rounded">
+
+  <input id="precoProduto" type="number" placeholder="Preço" class="border p-2 w-full mb-2 rounded">
+  <input id="precoDescontoProduto" type="number" placeholder="Preço desconto" class="border p-2 w-full mb-2 rounded">
+
+  <input id="imagemProduto" placeholder="URL da imagem" class="border p-2 w-full mb-2 rounded" oninput="previewImagem()">
+
+  <img id="preview" class="w-32 h-32 object-cover rounded mb-2 hidden"/>
+
+  <input id="estoqueProduto" type="number" placeholder="Estoque" class="border p-2 w-full mb-2 rounded">
+
+  <select id="categoriaProduto" class="border p-2 w-full mb-2 rounded"></select>
+
+  <button onclick="salvarProduto()" class="bg-heart text-white px-4 py-2 rounded">
+    Salvar
+  </button>
+</div>
+
+<div id="listaProdutos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+</div>
+
+<!-- CLIENTES -->
+<div id="clientes" class="hidden">
+  <h2 class="text-2xl font-bold">Clientes</h2>
+</div>
+
+<!-- CATEGORIAS -->
+<div id="categorias" class="hidden">
+
+<h2 class="text-2xl font-bold mb-4">Categorias</h2>
+
+<div class="bg-white p-4 rounded shadow mb-4">
+  <input type="hidden" id="id" />
+  <input id="nome" placeholder="Nome" class="border p-2 w-full mb-2" />
+  <input id="descricao" placeholder="Descrição" class="border p-2 w-full mb-2" />
+
+  <button onclick="salvarCategoria()" class="bg-heart text-white px-4 py-2 rounded">
+    Salvar
+  </button>
+</div>
+
+<div id="listaCategorias"></div>
+</div>
+
+</main>
+
+<script>
+const API_CAT = "http://localhost:8080/api/categorias";
+const API_PROD = "http://localhost:8080/api/produtos";
+
+/* ===== NAVEGAÇÃO ===== */
+function abrirHome(){
+  home.classList.remove("hidden");
+  produtos.classList.add("hidden");
+  clientes.classList.add("hidden");
+  categorias.classList.add("hidden");
+}
+
+function abrirProdutos(){
+  home.classList.add("hidden");
+  produtos.classList.remove("hidden");
+  clientes.classList.add("hidden");
+  categorias.classList.add("hidden");
+
+  listarProdutos();
+  carregarCategoriasSelect();
+}
+
+function abrirClientes(){
+  home.classList.add("hidden");
+  produtos.classList.add("hidden");
+  clientes.classList.remove("hidden");
+  categorias.classList.add("hidden");
+}
+
+function abrirCategorias(){
+  home.classList.add("hidden");
+  produtos.classList.add("hidden");
+  clientes.classList.add("hidden");
+  categorias.classList.remove("hidden");
+  listarCategorias();
+}
+
+/* ===== CATEGORIAS ===== */
+async function listarCategorias(){
+  const res = await fetch(API_CAT);
+  const data = await res.json();
+
+  listaCategorias.innerHTML = "";
+
+  data.forEach(cat=>{
+    listaCategorias.innerHTML += `
+      <div class="bg-white p-3 mb-2 rounded shadow flex justify-between">
+        <div>
+          <strong>${cat.nome}</strong><br>
+          <small>${cat.descricao}</small>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="editarCategoria(${cat.id_categoria}, '${cat.nome}', '${cat.descricao}')"
+            class="bg-blue-500 text-white px-2 py-1 rounded">
+            Editar
+          </button>
+          <button onclick="excluirCategoria(${cat.id_categoria})"
+            class="bg-heart text-white px-2 py-1 rounded">
+            Excluir
+          </button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+async function salvarCategoria(){
+  const cat = {
+    nome: nome.value,
+    descricao: descricao.value,
+    ativo: true
+  };
+
+  const idCategoria = document.getElementById("id").value;
+  
+  if(idCategoria){
+    await fetch(`${API_CAT}/${idCategoria}`,{
+      method:"PUT",
+      headers:{ "Content-Type":"application/json"},
+      body: JSON.stringify(cat)
+    });
+    document.getElementById("id").value = "";
+  } else {
+    await fetch(API_CAT,{
+      method:"POST",
+      headers:{ "Content-Type":"application/json"},
+      body: JSON.stringify(cat)
+    });
+  }
+
+  nome.value = "";
+  descricao.value = "";
+  listarCategorias();
+}
+
+function editarCategoria(id, nomeValor, descricaoValor){
+  document.getElementById("id").value = id;
+  document.getElementById("nome").value = nomeValor;
+  document.getElementById("descricao").value = descricaoValor;
+}
+
+async function excluirCategoria(id){
+  await fetch(`${API_CAT}/${id}`,{ method:"DELETE" });
+  listarCategorias();
+}
+
+/* ===== PRODUTOS ===== */
+
+async function carregarCategoriasSelect(){
+  const res = await fetch(API_CAT);
+  const data = await res.json();
+
+  const select = document.getElementById("categoriaProduto");
+  select.innerHTML = "<option value=''>Selecione a categoria</option>";
+
+  data.forEach(cat=>{
+    select.innerHTML += `<option value="${cat.id_categoria}">${cat.nome}</option>`;
+  });
+}
+
+function previewImagem(){
+  const url = imagemProduto.value;
+  const preview = document.getElementById("preview");
+
+  if(url){
+    preview.src = url;
+    preview.classList.remove("hidden");
+  } else {
+    preview.classList.add("hidden");
+  }
+}
+
+async function listarProdutos(){
+  const res = await fetch(API_PROD);
+  const data = await res.json();
+
+  listaProdutos.innerHTML = "";
+
+  data.forEach(p=>{
+    listaProdutos.innerHTML += `
+      <div class="bg-white rounded-xl shadow-md p-4 border-l-4 border-heart">
+        <img src="${p.imagem || 'https://via.placeholder.com/150'}"
+             class="w-full h-40 object-cover rounded mb-2">
+
+        <strong>${p.nome}</strong>
+        <p>${p.descricao}</p>
+
+        <p>R$ ${p.preco}</p>
+        <p class="text-heart">R$ ${p.preco_desconto}</p>
+
+        <button onclick="editarProduto(${p.id_produto}, '${p.nome}', '${p.descricao}', ${p.preco}, ${p.preco_desconto}, '${p.imagem}', ${p.qtd_estoque}, ${p.categoria?.id_categoria})"
+          class="bg-blue-500 text-white px-2 py-1 rounded mt-2">
+          Editar
+        </button>
+
+        <button onclick="excluirProduto(${p.id_produto})"
+          class="bg-heart text-white px-2 py-1 rounded mt-2">
+          Excluir
+        </button>
+      </div>
+    `;
+  });
+}
+
+function editarProduto(id, nomeV, descV, precoV, precoDV, imgV, estoqueV, catV){
+  idProduto.value = id;
+  nomeProduto.value = nomeV;
+  descricaoProduto.value = descV;
+  precoProduto.value = precoV;
+  precoDescontoProduto.value = precoDV;
+  imagemProduto.value = imgV;
+  estoqueProduto.value = estoqueV;
+  categoriaProduto.value = catV;
+
+  previewImagem();
+}
+
+async function salvarProduto(){
+
+  if(!nomeProduto.value || !precoProduto.value){
+    alert("Preencha nome e preço!");
+    return;
+  }
+
+  const produto = {
+    nome: nomeProduto.value,
+    descricao: descricaoProduto.value,
+    preco: parseFloat(precoProduto.value),
+    preco_desconto: parseFloat(precoDescontoProduto.value),
+    imagem: imagemProduto.value,
+    qtd_estoque: parseInt(estoqueProduto.value),
+    categoria: { id_categoria: parseInt(categoriaProduto.value) }
+  };
+
+  const id = idProduto.value;
+
+  if(id){
+    await fetch(`${API_PROD}/${id}`,{
+      method:"PUT",
+      headers:{ "Content-Type":"application/json"},
+      body: JSON.stringify(produto)
+    });
+  } else {
+    await fetch(API_PROD,{
+      method:"POST",
+      headers:{ "Content-Type":"application/json"},
+      body: JSON.stringify(produto)
+    });
+  }
+
+  limparProduto();
+  listarProdutos();
+}
+
+function limparProduto(){
+  idProduto.value = "";
+  nomeProduto.value = "";
+  descricaoProduto.value = "";
+  precoProduto.value = "";
+  precoDescontoProduto.value = "";
+  imagemProduto.value = "";
+  estoqueProduto.value = "";
+  categoriaProduto.value = "";
+  preview.classList.add("hidden");
+}
+
+async function excluirProduto(id){
+  await fetch(`${API_PROD}/${id}`,{ method:"DELETE" });
+  listarProdutos();
+}
+</script>
+
+</body>
+</html>
